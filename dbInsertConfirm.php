@@ -2,33 +2,64 @@
 <html>
 <head>
 	<title>Login Details</title>
-	<style type="text/css">
-		a{
-			margin-top: 70px;
-		}
-	</style>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;  
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+
+input[type=button] {
+    width: 25%;
+    background-color: #000000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 50px 20px;
+    cursor: pointer;
+}
+
+input[type=button]:hover {
+    background-color: #5A5353;
+}
+
+</style>
 </head>
 <body>
-
+<div id="myModal" class="modal">
+	<div class="modal-content">
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "php_session";
-// Create connection
+
 $conn = mysqli_connect($servername, $username, $password,$db);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-/*else 
-{ 
-echo "Connected successfully";
-}*/
+
 $fname=$_REQUEST["fname"];
 $lname=$_REQUEST["lname"];
 $email=$_REQUEST["email"];
@@ -45,6 +76,10 @@ else
 
 ?>
 <br>
-<a href="userDetails.php"><input type="button" class="btn btn-primary" value="details"></a>
+<a href="userDetails.php"><input type="button" value="Display user details"></a>
+</div>
+</div>
+
+
 </body>
 </html>
